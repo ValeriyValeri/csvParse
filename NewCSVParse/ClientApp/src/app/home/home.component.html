@@ -1,0 +1,47 @@
+
+
+
+<div class="container h-100" style="margin-top:20ex; margin-bottom: 20ex">
+  <div class="row h-100 justify-content-center align-items-center" ><h1 style="text-align:right">CSV Parser</h1></div> 
+  <div class="row h-100 justify-content-center align-items-center" style="background-color: rgb(146, 179, 184)">
+    <div class="col-md-2">
+      <input type="checkbox" name="enableHeaders" [(ngModel)]="enableHeaders"><span>Header in first row</span>
+    </div>
+    <!-- <div class="col-lg-2 ">
+      <input type="text" name="text" [(ngModel)]="text">
+    </div> -->
+    <div class="col-md-1">
+    <label class="btn btn-info">View
+      <input type="button" hidden  name="view" (click)="View()">
+    </label>
+  </div>
+    <div class="col-md-1">
+   <label class="btn btn-info">Upload file
+      <input  type="file" hidden (change)="Upload($event)" accept=".csv">
+      </label>      
+    </div>
+</div>
+<br/>
+
+  <div class="row h-100 justify-content-center align-items-center">
+    <table *ngIf="item ==null" class="table table-bordered">
+     <thead class="thead-dark">
+        <tr *ngIf="enableHeaders && isUploaded">
+          <th *ngFor="let item of items[0]; let i=index">
+                    <div> {{item}} </div>                  
+          </th>    
+        </tr>
+     </thead>
+    <tbody *ngIf="!enableHeaders">
+    <tr  *ngFor="let item of items; let i=index">
+        <td *ngFor="let item of items[i]">{{item}}</td>        
+   </tr>
+   </tbody>
+   <tbody *ngIf="enableHeaders">
+    <tr *ngFor="let item of items; let i=index">    
+        <td *ngFor="let item of items[i]"> <div *ngIf="i">{{item}}  </div></td>           
+   </tr>
+   </tbody>
+    </table>
+  </div>
+</div>
