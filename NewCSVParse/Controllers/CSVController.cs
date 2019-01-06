@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace NewCSVParse.Controllers
 {
+    //rrr
     // [Route("api/[controller]")]
     public class CSVController : Controller
     {
@@ -26,12 +27,12 @@ namespace NewCSVParse.Controllers
         {
             try
             {
-             
+
                 IFormFile file = Request.Form.Files.Single();
 
                 List<string[]> list = parsing.Parse(file);
                 string JSONresult = JsonConvert.SerializeObject(list);
-               
+
                 return Ok(JSONresult);
             }
             catch
